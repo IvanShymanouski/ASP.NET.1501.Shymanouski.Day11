@@ -9,7 +9,7 @@ using NLog;
 
 namespace Books
 {
-    public class BookListService : IXmlFormatExporter
+    public class BookListService
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -131,11 +131,12 @@ namespace Books
             return newListBooks;
         }
 
-        public void Export(IEnumerable<Book> books, string xmlfileName)
+        public void Export(string xmlfileName)
         {
             XDeclaration declaration = new XDeclaration("1.0", "Utf-8", "yes");
             XElement bookList = new XElement("Books");
 
+            IEnumerable<Book> books = repository.LoadBooks();
             foreach (Book book in books)
             {
                 bookList.Add(new XElement("Book",

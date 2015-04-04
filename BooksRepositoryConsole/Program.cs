@@ -40,7 +40,7 @@ namespace Books
             #endregion
 
             #region BookListXmlSave
-            books.Export(books.GetRepositoryBooks(), Directory.GetCurrentDirectory() + "\\BookListService.xml");
+            books.Export(Directory.GetCurrentDirectory() + "\\BookListService.xml");
             Console.WriteLine(File.ReadAllText(Directory.GetCurrentDirectory() + "\\BookListService.xml"));
             #endregion
 
